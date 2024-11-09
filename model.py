@@ -1,5 +1,5 @@
 import os 
-import cv2
+#import cv2
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -94,5 +94,5 @@ rf_predictions = rf_model.predict(X_test_hog)
 rf_accuracy = accuracy_score(y_test_hog, rf_predictions)
 print(f"Random Forest Test Accuracy: {rf_accuracy * 100:.2f}%")
 
-#with open('model.pkl', 'wb') as f:
-  #  pickle.dump(model, f)
+with open('model.pkl', 'wb') as f:
+    pickle.dump(model, f)
