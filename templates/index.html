@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image for Prediction</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #80deea);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header styles */
+        header {
+            background: #004d73;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Form container */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #004d73;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            margin-left: 32%;
+        }
+
+        form::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: #009688;
+            border-radius: 3px;
+        }
+
+        input[type="file"] {
+            padding: 15px;
+            width: 100%;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            background-color: #f7f7f7;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="file"]:focus {
+            border-color: #009688;
+            box-shadow: 0 0 10px rgba(0, 150, 136, 0.3);
+            outline: none;
+        }
+
+        button {
+            background-color: #00695c;
+            background-image: linear-gradient(to right, #004d40, #00695c);
+            color: white;
+            padding: 15px 25px;
+            margin-top: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #004d40;
+            transform: translateY(-3px);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            form {
+                padding: 30px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+
+        body, form, header {
+            transition: all 0.3s ease;
+        }
+
+        form:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Brain Hemorrhage Detection
+    </header>
+    <h1>Upload Image</h1>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

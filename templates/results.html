@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #ffccbc, #ff8a65);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #e64a19;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .result-box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #d84315;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d84315;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            background-color: #bf360c;
+            transform: translateY(-3px);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .result-box {
+                padding: 30px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+
+            a {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Prediction Results
+    </header>
+    <main>
+        <div class="result-box">
+            <h1>Result</h1>
+            <p>The prediction for the uploaded image is </p>
+
+            {% if prediction[0] == 1 %}
+                <strong><p style="color:red">Hemorrhage Detected</p></strong>
+            {% elif prediction[0] == 0 %}
+                <strong><p style="color:green">No Hemorrhage Detected</p></strong>
+            {% endif %}
+
+            <p>Probability of Hemorrhage: <strong>{{ (hemorrhage_prob * 100)| round(2) }}%</strong></p>
+            <p>Probability of No Hemorrhage: <strong>{{ (no_hemorrhage_prob * 100)| round(2) }}%</strong></p>
+
+            <p>Filename: <strong>{{ filename }}</strong></p>
+            <a href="/">Upload Another Image</a>
+        </div>
+    </main>
+</body>
+</html>
